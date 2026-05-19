@@ -15,15 +15,21 @@ public class ProductService {
     products.put("2", p2);
   }
 
-  // crud
+
+  // C - create
+  // map 에 전달받은 데이터 추가하는 메서드
   public void insert(Product product) {
     products.put(product.getId(), product);
   }
+  // R - read
   public Product findById(String id) {
     Product product = products.get(id);
     return product;
   }
+  // R - read
   public List<Product> findAll() {
     return new ArrayList<>(products.values());
   }
+
+
 }
