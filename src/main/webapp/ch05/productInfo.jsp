@@ -4,9 +4,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>상품 정보</title>
 </head>
 <body>
-<h2>Hello World!</h2>
+<h2>상품 정보</h2>
 </body>
 </html>
