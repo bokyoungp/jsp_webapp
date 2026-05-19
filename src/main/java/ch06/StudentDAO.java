@@ -1,6 +1,8 @@
 package ch06;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentDAO {
   Connection conn;
@@ -41,6 +43,29 @@ public class StudentDAO {
     }
     System.out.println(s.getName());
     return s;
+  }
+
+  // 3) Statement 생성,   // 4) SQL 문 전송 ,   // 5) 결과 받아와서 처리
+  public List<Student> findAll() {
+    ArrayList<Student> studentList = new ArrayList<>();
+    try {
+      pstmt = conn.prepareStatement("select * from student");
+
+      ResultSet resultSet = pstmt.executeQuery();
+      while(resultSet.next()) {
+        studentList.add(new Student(
+            resultSet.getInt("id"),
+            resultSet.getString("name"),
+            resultSet.getString("univ"),
+            resultSet.getDate("birth"),
+            resultSet.getString("email")
+        ));
+      }
+    } catch (SQLException e) {
+      System.out.println("학생정보 조회 오류");
+      throw new RuntimeException(e);
+    }
+    return studentList;
   }
 
   // 6) 연결 해제

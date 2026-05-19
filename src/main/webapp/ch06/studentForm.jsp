@@ -7,12 +7,12 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/pcontrol?action=insert" method="post">
-    id <input type="text" name="id">
-    name <input type="text" name="name">
-    maker <input type="text" name="maker">
-    price <input type="text" name="price">
-    date <input type="text" name="date">
+<form action="/student?action=create" method="post">
+    <p>id <input type="text" name="id"></p>
+    <p>name <input type="text" name="name"></p>
+    <p>univ <input type="text" name="univ"></p>
+    <p>birth <input type="text" name="birth"></p>
+    <p>email <input type="email" name="email"></p>
   <input type="submit" value="등록">
 </form>
 </body>

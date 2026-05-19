@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,18 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/pcontrol?action=insert" method="post">
-    id <input type="text" name="id">
-    name <input type="text" name="name">
-    maker <input type="text" name="maker">
-    price <input type="text" name="price">
-    date <input type="text" name="date">
-  <input type="submit" value="등록">
-</form>
+<table>
+    <tr>
+        <th>번호</th><th>이름</th><th>email</th>
+    </tr>
+    <c:forEach var="s" items="${studentList}">
+    <tr>
+        <td>${s.id}</td>
+        <td>${s.name}</td>
+        <td>${s.email}</td>
+    </tr>
+    </c:forEach>
+
+    <a href="/student?action=create">새로운 학생 정보 입력</a>
 </body>
 </html>

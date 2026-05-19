@@ -28,11 +28,20 @@ public class StudentController extends HttpServlet {
     String view = "/ch06/";
     switch (action) {
       case "list" :
-        view += list(req,resp); break;
+        view += list(req,resp);
+        getServletContext().getRequestDispatcher(view).forward(req,resp);
+        break;
       case "create" :
-        view += create(req,resp);
+        if(req.getMethod().equals("GET")) {
+          view += "studentForm.jsp";
+          getServletContext().getRequestDispatcher(view).forward(req, resp);
+        } else if(req.getMethod().equals("POST")) {
+          String url = create(req,resp);
+          resp.sendRedirect(url);
+        }
         break;
     }
+
   }
 
   @Override
@@ -41,14 +50,16 @@ public class StudentController extends HttpServlet {
     service.close();
   }
 
+  // http://localhost:8080/student?action=list
   private String list(HttpServletRequest req, HttpServletResponse resp){
-    // findAll()
-    Student student = service.findById(1);
-    req.setAttribute("student", student);
+    // findAll() , findById(id)
+    //Student student = service.findById(1);
+    List<Student> studentList = service.findAll();
+    req.setAttribute("studentList", studentList);
     return "studentList.jsp";
   }
 
   private String create(HttpServletRequest req, HttpServletResponse resp){
-    return null;
+    return "/student?action=list";
   }
 }
