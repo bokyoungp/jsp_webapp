@@ -26,12 +26,12 @@ public class StudentDAO {
       pstmt.setInt(1, id);
       ResultSet resultSet = pstmt.executeQuery();
       resultSet.next();
+      // java.util.Date 가 java.sql.Date 의 부모 타입이라 업 캐스팅 가능
       s = new Student(
           resultSet.getInt("id"),
           resultSet.getString("name"),
           resultSet.getString("univ"),
-          null,
-          //resultSet.getString("birth"),
+          resultSet.getDate("birth"),
           resultSet.getString("email")
           );
 
