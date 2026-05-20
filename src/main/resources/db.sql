@@ -1,4 +1,4 @@
-//mysql의 경우에는 실행하지 않음
+-- mysql의 경우에는 실행하지 않음
 CREATE TABLE IF NOT EXISTS STUDENT (
     id    INT AUTO_INCREMENT PRIMARY KEY,
     name  VARCHAR(45),

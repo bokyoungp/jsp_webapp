@@ -18,7 +18,7 @@ public class StudentController extends HttpServlet {
   public void init() throws ServletException {
     // 1),2) open()
     service = new StudentDAO();
-    service.open();
+    service.open(getServletContext());
   }
 
   @Override
